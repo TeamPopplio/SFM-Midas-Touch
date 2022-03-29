@@ -13,6 +13,7 @@
 
 #include "stdafx.hpp"
 #include "midasplugin.h"
+#include <feature.hpp>
 
 SH_DECL_HOOK6(IServerGameDLL, LevelInit, SH_NOATTRIB, 0, bool, char const*, char const*, char const*, char const*, bool, bool);
 SH_DECL_HOOK3_void(IServerGameDLL, ServerActivate, SH_NOATTRIB, 0, edict_t*, int, int);
@@ -56,6 +57,8 @@ bool MidasTouch::Load(PluginId id, ISmmAPI *ismm, char *error, size_t maxlen, bo
 {
 	PLUGIN_SAVEVARS();
 
+	Msg("Midas Touch: Starting...");
+
 	GET_V_IFACE_CURRENT(GetEngineFactory, engine, IVEngineServer, INTERFACEVERSION_VENGINESERVER);
 	GET_V_IFACE_CURRENT(GetEngineFactory, gameevents, IGameEventManager2, INTERFACEVERSION_GAMEEVENTSMANAGER2);
 	GET_V_IFACE_CURRENT(GetEngineFactory, helpers, IServerPluginHelpers, INTERFACEVERSION_ISERVERPLUGINHELPERS);
@@ -65,8 +68,6 @@ bool MidasTouch::Load(PluginId id, ISmmAPI *ismm, char *error, size_t maxlen, bo
 	GET_V_IFACE_ANY(GetServerFactory, playerinfomanager, IPlayerInfoManager, INTERFACEVERSION_PLAYERINFOMANAGER);
 
 	gpGlobals = ismm->GetCGlobals();
-
-	META_LOG(g_PLAPI, "Starting Midas Touch.");
 
 	/* Load the VSP listener.  This is usually needed for IServerPluginHelpers. */
 	if ((vsp_callbacks = ismm->GetVSPInfo(NULL)) == NULL)
@@ -87,7 +88,11 @@ bool MidasTouch::Load(PluginId id, ISmmAPI *ismm, char *error, size_t maxlen, bo
 	SH_ADD_HOOK_MEMFUNC(IServerGameClients, ClientConnect, gameclients, this, &MidasTouch::Hook_ClientConnect, false);
 	SH_ADD_HOOK_MEMFUNC(IServerGameClients, ClientCommand, gameclients, this, &MidasTouch::Hook_ClientCommand, false);
 
-	ENGINE_CALL(LogPrint)("All hooks started!\n");
+	Msg("Midas Touch: Hooks initialized!");
+
+	Feature::LoadFeatures();
+
+	Msg("Midas Touch: Features initialized");
 	return true;
 }
 
@@ -104,6 +109,8 @@ bool MidasTouch::Unload(char *error, size_t maxlen)
 	SH_REMOVE_HOOK_MEMFUNC(IServerGameClients, ClientSettingsChanged, gameclients, this, &MidasTouch::Hook_ClientSettingsChanged, false);
 	SH_REMOVE_HOOK_MEMFUNC(IServerGameClients, ClientConnect, gameclients, this, &MidasTouch::Hook_ClientConnect, false);
 	SH_REMOVE_HOOK_MEMFUNC(IServerGameClients, ClientCommand, gameclients, this, &MidasTouch::Hook_ClientCommand, false);
+
+	//Feature::UnloadFeatures();
 
 	return true;
 }

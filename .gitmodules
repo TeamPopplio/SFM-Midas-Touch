@@ -1,4 +1,0 @@
-[submodule "SPTLib"]
-	path = SPTLib
-	url = https://github.com/YaLTeR/SPTLib.git
-	shallow = true

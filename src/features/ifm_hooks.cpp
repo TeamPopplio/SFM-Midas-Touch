@@ -34,11 +34,12 @@ protected:
 	virtual void InitHooks() override
 	{
 		HOOK_FUNCTION(ifm, SFMLoaded);
+		Msg("Midas Touch: ifm.dll hooks initialized!");
 	}
 
 	virtual void LoadFeature() override
 	{
-		
+
 	}
 
 	virtual void UnloadFeature() override
@@ -58,7 +59,7 @@ void* __fastcall IFMHooks::HOOKED_SFMLoaded(void* thisptr, int edx)
 			if (widget->inherits("QMainWindow"))
 			{
 				sfm_test.MainWindow = widget;
-				Msg("Midas Touch: Found main window.\n");
+				//Msg("Midas Touch: Found main window.\n");
 				break;
 			}
 		}
@@ -76,7 +77,7 @@ void* __fastcall IFMHooks::HOOKED_SFMLoaded(void* thisptr, int edx)
 			QWidget* widget = sfm_test.MainWindow->findChild<QWidget*>(QString::fromAscii("QAnimationSetEditor"));
 			if (widget != nullptr)
 			{
-				Msg("Midas Touch: Found animation set editor with %d/%d attempts remaining.\n", sfm_test.AnimationSetEditorAttempts, sfm_test.AnimationSetEditorMaxAttempts);
+				//Msg("Midas Touch: Found animation set editor with %d/%d attempts remaining.\n", sfm_test.AnimationSetEditorAttempts, sfm_test.AnimationSetEditorMaxAttempts);
 				sfm_test.AnimationSetEditor = widget;
 			}
 			else if (sfm_test.AnimationSetEditorAttempts > 0)
@@ -86,7 +87,7 @@ void* __fastcall IFMHooks::HOOKED_SFMLoaded(void* thisptr, int edx)
 			else if ((sfm_test.AcknowledgedErrorFlags & 1) == 0)
 			{
 				// Show error modal.
-				Msg("Midas Touch: Failed to find animation set editor within %d attempts.\n", sfm_test.AnimationSetEditorMaxAttempts);
+				//Msg("Midas Touch: Failed to find animation set editor within %d attempts.\n", sfm_test.AnimationSetEditorMaxAttempts);
 				sfm_test.AcknowledgedErrorFlags = 1 >> sfm_test.AcknowledgedErrorFlags;
 				QMessageBox messageBox;
 				messageBox.critical(0, "Midas Touch: Error", "Could not find the animation set editor widget!\nMidas Touch may not function correctly.\nPlease open the animation set editor widget.");

@@ -9,6 +9,11 @@
 #include <sstream>
 #include <string>
 
+#include <ISmmPlugin.h>
+#include <igameevents.h>
+#include <iplayerinfo.h>
+#include <sh_vector.h>
+
 #define WIN32_LEAN_AND_MEAN
 #define NOMINMAX
 #include <Windows.h>

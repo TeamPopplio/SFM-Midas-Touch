@@ -14,10 +14,6 @@
 #ifndef _INCLUDE_METAMOD_SOURCE_STUB_PLUGIN_H_
 #define _INCLUDE_METAMOD_SOURCE_STUB_PLUGIN_H_
 
-#include <ISmmPlugin.h>
-#include <igameevents.h>
-#include <iplayerinfo.h>
-#include <sh_vector.h>
 #include "engine_wrappers.h"
 
 #if defined WIN32 && !defined snprintf
