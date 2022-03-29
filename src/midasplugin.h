@@ -18,12 +18,13 @@
 #include <igameevents.h>
 #include <iplayerinfo.h>
 #include <sh_vector.h>
+#include "engine_wrappers.h"
 
 #if defined WIN32 && !defined snprintf
 #define snprintf _snprintf
 #endif
 
-class SamplePlugin : public ISmmPlugin, public IMetamodListener
+class MidasTouch : public ISmmPlugin, public IMetamodListener
 {
 public:
 	bool Load(PluginId id, ISmmAPI *ismm, char *error, size_t maxlen, bool late);
@@ -69,7 +70,7 @@ public:
 	const char *GetLogTag();
 };
 
-extern SamplePlugin g_SamplePlugin;
+extern MidasTouch g_MidasTouch;
 
 PLUGIN_GLOBALVARS();
 

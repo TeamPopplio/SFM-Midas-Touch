@@ -1,30 +1,102 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    <Filter Include="Midas Touch">
+      <UniqueIdentifier>{12485F44-CAAA-4504-8616-8384DFC90856}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    <Filter Include="Midas Touch\features">
+      <UniqueIdentifier>{E9C70C64-236F-42A0-8DE4-3AC11E5D44AD}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    <Filter Include="SPTLib">
+      <UniqueIdentifier>{62068487-8a42-452a-b559-e0253a231434}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SPTLib\Windows">
+      <UniqueIdentifier>{9a4a9a35-de34-40d0-a01c-057aea6a099d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="sptlib\Hooks.cpp">
+      <Filter>SPTLib</Filter>
+    </ClCompile>
+    <ClCompile Include="sptlib\IHookableModule.cpp">
+      <Filter>SPTLib</Filter>
+    </ClCompile>
+    <ClCompile Include="sptlib\IHookableNameFilter.cpp">
+      <Filter>SPTLib</Filter>
+    </ClCompile>
+    <ClCompile Include="sptlib\memutils.cpp">
+      <Filter>SPTLib</Filter>
+    </ClCompile>
+    <ClCompile Include="sptlib\sptlib.cpp">
+      <Filter>SPTLib</Filter>
+    </ClCompile>
+    <ClCompile Include="SPTLib\IHookableDirFilter.cpp">
+      <Filter>SPTLib</Filter>
+    </ClCompile>
+    <ClCompile Include="SPTLib\IHookableNameFilterOrdered.cpp">
+      <Filter>SPTLib</Filter>
+    </ClCompile>
+    <ClCompile Include="SPTLib\Windows\DetoursUtils.cpp">
+      <Filter>SPTLib\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="SPTLib\Windows\Hooks_win.cpp">
+      <Filter>SPTLib\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="SPTLib\Windows\MemUtils_win.cpp">
+      <Filter>SPTLib\Windows</Filter>
+    </ClCompile>
     <ClCompile Include="src\midasplugin.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Midas Touch</Filter>
+    </ClCompile>
+    <ClCompile Include="src\feature.cpp">
+      <Filter>Midas Touch</Filter>
+    </ClCompile>
+    <ClCompile Include="src\features\ifm_hooks.cpp">
+      <Filter>Midas Touch\features</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\engine_wrappers.h">
-      <Filter>Header Files</Filter>
+      <Filter>Midas Touch</Filter>
     </ClInclude>
     <ClInclude Include="src\midasplugin.h">
-      <Filter>Header Files</Filter>
+      <Filter>Midas Touch</Filter>
+    </ClInclude>
+    <ClInclude Include="src\feature.hpp">
+      <Filter>Midas Touch</Filter>
+    </ClInclude>
+    <ClInclude Include="src\patterns.hpp">
+      <Filter>Midas Touch</Filter>
+    </ClInclude>
+    <ClInclude Include="src\stdafx.hpp">
+      <Filter>Midas Touch</Filter>
+    </ClInclude>
+    <ClInclude Include="SPTLib\IHookableDirFilter.hpp">
+      <Filter>SPTLib</Filter>
+    </ClInclude>
+    <ClInclude Include="SPTLib\Windows\DetoursUtils.hpp">
+      <Filter>SPTLib\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="SPTLib\IHookableNameFilterOrdered.hpp">
+      <Filter>SPTLib</Filter>
+    </ClInclude>
+    <ClInclude Include="SPTLib\patterns.hpp">
+      <Filter>SPTLib</Filter>
+    </ClInclude>
+    <ClInclude Include="SPTLib\patterns_macros.hpp">
+      <Filter>SPTLib</Filter>
+    </ClInclude>
+    <ClInclude Include="sptlib\Hooks.hpp">
+      <Filter>SPTLib</Filter>
+    </ClInclude>
+    <ClInclude Include="sptlib\IHookableModule.hpp">
+      <Filter>SPTLib</Filter>
+    </ClInclude>
+    <ClInclude Include="sptlib\IHookableNameFilter.hpp">
+      <Filter>SPTLib</Filter>
+    </ClInclude>
+    <ClInclude Include="sptlib\memutils.hpp">
+      <Filter>SPTLib</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

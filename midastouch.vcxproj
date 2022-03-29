@@ -7,37 +7,38 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{E62E5876-E1E2-41A0-85CA-1B41B9DA55F9}</ProjectGuid>
+    <ProjectGuid>{49204E4F-01BC-4FFC-9551-0B9CECECE974}</ProjectGuid>
     <RootNamespace>midastouch</RootNamespace>
     <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+  <PropertyGroup Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v141_xp</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
   </ImportGroup>
-  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+  <ImportGroup Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Configuration)\</IntDir>
-    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
-    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
-    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
-    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules />
+    <CodeAnalysisRuleAssemblies />
   </PropertyGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+  <ItemDefinitionGroup>
     <ClCompile>
       <AdditionalOptions>/D SE_EPISODE1=1 /D SE_DARKMESSIAH=2 /D SE_ORANGEBOX=3 /D SE_BLOODYGOODTIME=4 /D SE_EYE=5 /D SE_CSS=6 /D SE_ORANGEBOXVALVE=7 /D SE_LEFT4DEAD=8 /D SE_LEFT4DEAD2=9 /D SE_ALIENSWARM=10 /D SE_PORTAL2=1 /D SE_CSGO=12 %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalIncludeDirectories>$(MMSOURCE18)\core;$(MMSOURCE18)\core\sourcehook;$(HL2SDK-SWARM)\public;$(HL2SDK-SWARM)\public\engine;$(HL2SDK-SWARM)\public\game\server;$(HL2SDK-SWARM)\public\tier0;$(HL2SDK-SWARM)\public\tier1;$(HL2SDK-SWARM)\public\vstdlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;.;$(MMSOURCE18)\core;$(MMSOURCE18)\core\sourcehook;$(HL2SDK-SWARM)\public;$(HL2SDK-SWARM)\public\engine;$(HL2SDK-SWARM)\public\game\server;$(HL2SDK-SWARM)\public\tier0;$(HL2SDK-SWARM)\public\tier1;$(HL2SDK-SWARM)\public\vstdlib;SPTLib\Windows\minhook\include;SPTLib\Windows\Minhook\include;$(QTDIR)\include;$(QTDIR)\include\Qt;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtCore;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;midastouch_EXPORTS;COMPILER_MSVC;COMPILER_MSVC32;SOURCE_ENGINE=10;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <PrecompiledHeader>
@@ -46,8 +47,9 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>$(HL2SDK-SWARM)\lib\public\interfaces.lib;$(HL2SDK-SWARM)\lib\public\tier0.lib;$(HL2SDK-SWARM)\lib\public\tier1.lib;$(HL2SDK-SWARM)\lib\public\vstdlib.lib;legacy_stdio_definitions.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>$(OutDir)midastouch_mm.dll</OutputFile>
+      <AdditionalLibraryDirectories>SDK\sdk2013\lib\common;SDK\sdk2013\lib\public;$(QTDIR)\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>$(HL2SDK-SWARM)\lib\public\interfaces.lib;$(HL2SDK-SWARM)\lib\public\tier0.lib;$(HL2SDK-SWARM)\lib\public\tier1.lib;$(HL2SDK-SWARM)\lib\public\vstdlib.lib;legacy_stdio_definitions.lib;QtGui4.lib;QtCore4.lib;qtmain.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)midastouch.dll</OutputFile>
       <IgnoreSpecificDefaultLibraries>LIBC;LIBCD;LIBCMTD;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
@@ -64,11 +66,65 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="sptlib\Hooks.cpp">
+      <PrecompiledHeaderFile>sptlib-stdafx.hpp</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>$(IntDir)SPTLIB.pch</PrecompiledHeaderOutputFile>
+    </ClCompile>
+    <ClCompile Include="SPTLIB\IHookableDirFilter.cpp">
+      <PrecompiledHeaderFile>sptlib-stdafx.hpp</PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="sptlib\IHookableModule.cpp">
+      <PrecompiledHeaderFile>sptlib-stdafx.hpp</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>$(IntDir)SPTLIB.pch</PrecompiledHeaderOutputFile>
+    </ClCompile>
+    <ClCompile Include="sptlib\IHookableNameFilter.cpp">
+      <PrecompiledHeaderFile>sptlib-stdafx.hpp</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>$(IntDir)SPTLIB.pch</PrecompiledHeaderOutputFile>
+    </ClCompile>
+    <ClCompile Include="SPTLIB\IHookableNameFilterOrdered.cpp">
+      <PrecompiledHeaderFile>sptlib-stdafx.hpp</PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="sptlib\memutils.cpp">
+      <PrecompiledHeaderFile>sptlib-stdafx.hpp</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>$(IntDir)SPTLIB.pch</PrecompiledHeaderOutputFile>
+    </ClCompile>
+    <ClCompile Include="SPTLIB\Windows\DetoursUtils.cpp">
+      <PrecompiledHeaderFile>sptlib-stdafx.hpp</PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="SPTLIB\Windows\Hooks_win.cpp">
+      <PrecompiledHeaderFile>sptlib-stdafx.hpp</PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="SPTLIB\Windows\MemUtils_win.cpp">
+      <PrecompiledHeaderFile>sptlib-stdafx.hpp</PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="sptlib\sptlib.cpp">
+      <PrecompiledHeaderFile>sptlib-stdafx.hpp</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>$(IntDir)SPTLIB.pch</PrecompiledHeaderOutputFile>
+    </ClCompile>
     <ClCompile Include="src\midasplugin.cpp" />
+    <ClCompile Include="src\feature.cpp" />
+    <ClCompile Include="src\features\ifm_hooks.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="SPTLIB\Windows\minhook\build\VC15\libMinHook.vcxproj">
+      <Project>{f142a341-5ee0-442d-a15f-98ae9b48dbae}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="sptlib\Hooks.hpp" />
+    <ClInclude Include="SPTLIB\IHookableDirFilter.hpp" />
+    <ClInclude Include="sptlib\IHookableModule.hpp" />
+    <ClInclude Include="sptlib\IHookableNameFilter.hpp" />
+    <ClInclude Include="SPTLIB\IHookableNameFilterOrdered.hpp" />
+    <ClInclude Include="sptlib\memutils.hpp" />
+    <ClInclude Include="SPTLIB\patterns.hpp" />
+    <ClInclude Include="SPTLIB\patterns_macros.hpp" />
+    <ClInclude Include="SPTLIB\Windows\DetoursUtils.hpp" />
     <ClInclude Include="src\engine_wrappers.h" />
     <ClInclude Include="src\midasplugin.h" />
+    <ClInclude Include="src\feature.hpp" />
+    <ClInclude Include="src\patterns.hpp" />
+    <ClInclude Include="src\stdafx.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
