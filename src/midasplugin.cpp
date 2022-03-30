@@ -11,6 +11,8 @@
  * SOFTWARE.
  */
 
+// TODO: Remove sample plugin code.
+
 #include "stdafx.hpp"
 #include "midasplugin.h"
 #include <feature.hpp>
@@ -57,8 +59,6 @@ bool MidasTouch::Load(PluginId id, ISmmAPI *ismm, char *error, size_t maxlen, bo
 {
 	PLUGIN_SAVEVARS();
 
-	Msg("Midas Touch: Starting...");
-
 	GET_V_IFACE_CURRENT(GetEngineFactory, engine, IVEngineServer, INTERFACEVERSION_VENGINESERVER);
 	GET_V_IFACE_CURRENT(GetEngineFactory, gameevents, IGameEventManager2, INTERFACEVERSION_GAMEEVENTSMANAGER2);
 	GET_V_IFACE_CURRENT(GetEngineFactory, helpers, IServerPluginHelpers, INTERFACEVERSION_ISERVERPLUGINHELPERS);
@@ -88,11 +88,8 @@ bool MidasTouch::Load(PluginId id, ISmmAPI *ismm, char *error, size_t maxlen, bo
 	SH_ADD_HOOK_MEMFUNC(IServerGameClients, ClientConnect, gameclients, this, &MidasTouch::Hook_ClientConnect, false);
 	SH_ADD_HOOK_MEMFUNC(IServerGameClients, ClientCommand, gameclients, this, &MidasTouch::Hook_ClientCommand, false);
 
-	Msg("Midas Touch: Hooks initialized!");
-
 	Feature::LoadFeatures();
-
-	Msg("Midas Touch: Features initialized");
+	
 	return true;
 }
 
@@ -110,7 +107,7 @@ bool MidasTouch::Unload(char *error, size_t maxlen)
 	SH_REMOVE_HOOK_MEMFUNC(IServerGameClients, ClientConnect, gameclients, this, &MidasTouch::Hook_ClientConnect, false);
 	SH_REMOVE_HOOK_MEMFUNC(IServerGameClients, ClientCommand, gameclients, this, &MidasTouch::Hook_ClientCommand, false);
 
-	//Feature::UnloadFeatures();
+	Feature::UnloadFeatures();
 
 	return true;
 }

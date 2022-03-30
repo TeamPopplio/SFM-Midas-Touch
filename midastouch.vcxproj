@@ -11,6 +11,7 @@
     <RootNamespace>midastouch</RootNamespace>
     <Keyword>Win32Proj</Keyword>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>Midas Touch</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Label="Configuration">
@@ -87,18 +88,18 @@
     <ClCompile Include="sptlib\memutils.cpp">
       <PrecompiledHeaderFile>sptlib-stdafx.hpp</PrecompiledHeaderFile>
       <PrecompiledHeaderOutputFile>$(IntDir)SPTLIB.pch</PrecompiledHeaderOutputFile>
-	  <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="SPTLIB\Windows\DetoursUtils.cpp">
       <PrecompiledHeaderFile>sptlib-stdafx.hpp</PrecompiledHeaderFile>
     </ClCompile>
     <ClCompile Include="SPTLIB\Windows\Hooks_win.cpp">
       <PrecompiledHeaderFile>sptlib-stdafx.hpp</PrecompiledHeaderFile>
-		<PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="SPTLIB\Windows\MemUtils_win.cpp">
       <PrecompiledHeaderFile>sptlib-stdafx.hpp</PrecompiledHeaderFile>
-	  <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="sptlib\sptlib.cpp">
       <PrecompiledHeaderFile>sptlib-stdafx.hpp</PrecompiledHeaderFile>
